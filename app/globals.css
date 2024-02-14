@@ -6,6 +6,42 @@
   * {
     @apply m-0 p-0 box-border scroll-smooth;
   }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-bold;
+  }
+
+  h1 {
+    @apply text-4xl;
+  }
+  h2 {
+    @apply text-3xl;
+  }
+  h3 {
+    @apply text-2xl;
+  }
+  h4 {
+    @apply text-xl;
+  }
+
+  p {
+    @apply text-sm text-default-text;
+  }
+
+  form {
+    @apply rounded-xl p-4;
+  }
+  label {
+    @apply mt-3;
+  }
+  input,
+  select,
+  textarea {
+    @apply m-1 rounded p-1 bg-card;
+  }
 }
 
 @layer components {

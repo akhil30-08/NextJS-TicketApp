@@ -20,9 +20,9 @@ export default function RootLayout({ children }) {
         <main className='flex flex-col h-screen min-h-screen'>
           <Nav />
 
-          <div className='flex-grow overflow-y-auto bg-page text-default-text'>
+          <section className='flex-grow overflow-y-auto bg-page text-default-text'>
             {children}
-          </div>
+          </section>
         </main>
       </body>
     </html>
