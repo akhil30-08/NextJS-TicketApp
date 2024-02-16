@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-const TicketForm = () => {
+const TicketForm = ({ ticketToEdit }) => {
   const router = useRouter();
 
   const defaultTicketData = {
@@ -15,7 +15,7 @@ const TicketForm = () => {
     status: 'Not Started',
   };
 
-  const [formData, setformData] = useState(defaultTicketData);
+  const [formData, setformData] = useState(ticketToEdit ?? defaultTicketData);
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -32,19 +32,30 @@ const TicketForm = () => {
   const handleTicketSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch('/api/Tickets', {
-      method: 'POST',
-      body: JSON.stringify({ formData }),
-      'content-type': 'application/json',
-    });
+    if (ticketToEdit) {
+      const res = await fetch(`/api/Tickets/${ticketToEdit._id}`, {
+        method: 'PUT',
+        body: JSON.stringify({ formData }),
+        'content-type': 'application/json',
+      });
 
-    if (!res.ok) {
-      throw new Error('Failed to Create Ticket');
+      if (!res.ok) {
+        throw new Error('Failed to Update Ticket');
+      }
+    } else {
+      const res = await fetch('/api/Tickets', {
+        method: 'POST',
+        body: JSON.stringify({ formData }),
+        'content-type': 'application/json',
+      });
+
+      if (!res.ok) {
+        throw new Error('Failed to Create Ticket');
+      }
     }
-    console.log(formData);
 
-    router.refresh();
     router.push('/');
+    router.refresh();
   };
   return (
     <div className='flex justify-center'>
@@ -54,7 +65,7 @@ const TicketForm = () => {
         className='flex flex-col gap-5 w-1/2'
         onSubmit={handleTicketSubmit}
       >
-        <h3>Create Your Ticket</h3>
+        <h3>{ticketToEdit ? 'Edit' : 'Create'} Your Ticket</h3>
 
         <label htmlFor='title'>Title</label>
         <input
@@ -153,25 +164,18 @@ const TicketForm = () => {
             onChange={handleChange}
             className='block w-full'
           />
-          <p className='text-right font-bold text-amber-400'>
-            {formData.progress}
-          </p>
+          <p className='text-right font-bold text-amber-400'>{formData.progress}</p>
         </div>
 
         <label htmlFor='status'>Status</label>
-        <select
-          name='status'
-          id='status'
-          value={formData.status}
-          onChange={handleChange}
-        >
+        <select name='status' id='status' value={formData.status} onChange={handleChange}>
           <option value='not started'>Not Started</option>
           <option value='started'>Started</option>
           <option value='done'>Done</option>
         </select>
 
         <button type='submit' className='btn'>
-          Create Ticket
+          {ticketToEdit ? 'Edit' : 'Create'} Ticket
         </button>
       </form>
     </div>

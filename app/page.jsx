@@ -24,7 +24,7 @@ export default async function Dashboard() {
       {tickets &&
         uniqueCategories?.map((uniqueCategory) => (
           <div key={uniqueCategory} className=' my-4'>
-            <h2>{uniqueCategory}</h2>
+            <h2 className='mb-1'>{uniqueCategory}</h2>
 
             <div className='grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3'>
               {tickets
