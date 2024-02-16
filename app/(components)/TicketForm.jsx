@@ -58,7 +58,7 @@ const TicketForm = ({ ticketToEdit }) => {
     router.refresh();
   };
   return (
-    <div className='flex justify-center'>
+    <div className='flex justify-center w-screen'>
       <form
         action=''
         method='post'

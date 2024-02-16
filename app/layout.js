@@ -3,6 +3,7 @@ import './globals.css';
 import Nav from './(components)/Nav';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import NextTopLoader from 'nextjs-toploader';
 
 config.autoAddCss = false;
 
@@ -17,10 +18,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang='en'>
       <body className={inter.className}>
+        <NextTopLoader />
         <main className='flex flex-col h-screen min-h-screen'>
           <Nav />
 
-          <section className='flex-grow overflow-y-auto bg-page text-default-text'>
+          <section className='flex-grow overflow-y-auto bg-page text-default-text w-full'>
             {children}
           </section>
         </main>

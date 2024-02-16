@@ -20,13 +20,13 @@ const StatusDisplay = ({ status }) => {
   };
 
   return (
-    <span
-      className={`inline-block rounded-full px-2 py-1 text-xs font-semibold text-gray-700 ${colorAdd(
+    <div
+      className={`rounded-full max-sm:w-16 break-words max-sm:mt-2 px-2 py-1 text-xs font-semibold text-gray-700 ${colorAdd(
         status
       )}`}
     >
       {status}
-    </span>
+    </div>
   );
 };
 

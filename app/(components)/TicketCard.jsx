@@ -1,10 +1,5 @@
 import { formatDate } from '../(utils)/utils';
-import {
-  DeleteBlock,
-  PriorityDisplay,
-  ProgressBar,
-  StatusDisplay,
-} from './index';
+import { DeleteBlock, PriorityDisplay, ProgressBar, StatusDisplay } from './index';
 import Link from 'next/link';
 
 const TicketCard = ({ ticket }) => {
@@ -26,14 +21,13 @@ const TicketCard = ({ ticket }) => {
 
         <div className='flex-grow'></div>
 
-        <div className='flex mt-2'>
+        <div className='flex mt-2 w-full'>
           <div className='flex flex-col'>
             <p className='my-1'>{formatDate(createdAt)}</p>
-            <ProgressBar progress={progress} />
-          </div>
-
-          <div className='flex items-end ml-auto'>
-            <StatusDisplay status={status} />
+            <div className='md:flex md:justify-between'>
+              <ProgressBar progress={progress} />
+              <StatusDisplay status={status} />
+            </div>
           </div>
         </div>
       </Link>
