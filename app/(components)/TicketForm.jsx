@@ -62,7 +62,7 @@ const TicketForm = ({ ticketToEdit }) => {
       <form
         action=''
         method='post'
-        className='flex flex-col gap-5 w-1/2'
+        className='flex flex-col gap-5 md:w-1/2'
         onSubmit={handleTicketSubmit}
       >
         <h3>{ticketToEdit ? 'Edit' : 'Create'} Your Ticket</h3>
@@ -173,7 +173,6 @@ const TicketForm = ({ ticketToEdit }) => {
           <option value='started'>Started</option>
           <option value='done'>Done</option>
         </select>
-
         <button type='submit' className='btn'>
           {ticketToEdit ? 'Edit' : 'Create'} Ticket
         </button>

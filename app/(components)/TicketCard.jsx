@@ -17,14 +17,16 @@ const TicketCard = ({ ticket }) => {
 
         <h4>{title}</h4>
         <hr className='border-0 bg-page mb-2 h-px mt-px' />
-        <p className='whitespace-pre-wrap'>{description}</p>
+        <div className='text-wrap'>
+          <p className='text-ellipsis'>{description}</p>
+        </div>
 
         <div className='flex-grow'></div>
 
         <div className='flex mt-2 w-full'>
-          <div className='flex flex-col'>
+          <div className='flex flex-col w-full'>
             <p className='my-1'>{formatDate(createdAt)}</p>
-            <div className='md:flex md:justify-between'>
+            <div className='md:flex md:justify-between gap-2'>
               <ProgressBar progress={progress} />
               <StatusDisplay status={status} />
             </div>

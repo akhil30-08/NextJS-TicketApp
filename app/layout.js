@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <NextTopLoader />
+        <NextTopLoader height={2} showSpinner={false} color='#7fa99b' />
         <main className='flex flex-col h-screen min-h-screen'>
           <Nav />
 
